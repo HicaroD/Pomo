@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'src/presenter/pages/Sign/sign.dart';
 import 'src/presenter/pages/Home/home.dart';
 
 class AppModule extends Module {
@@ -8,6 +9,7 @@ class AppModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute('/', child: (_, __) => const Home()),
+    ChildRoute('/', child: (_, __) => const SignPage()),
+    ChildRoute('/home', child: (_, __) => const HomePage()),
   ];
 }
