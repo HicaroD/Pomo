@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:pomo_app/src/presenter/pages/Home/home.dart';
+
+import 'src/presenter/pages/Home/home.dart';
 
 class AppModule extends Module {
   @override
