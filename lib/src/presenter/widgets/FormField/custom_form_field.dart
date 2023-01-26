@@ -11,14 +11,12 @@ class CustomFormField extends StatefulWidget {
   final FieldType fieldType;
   final Color? textColor;
   final Color? borderColor;
-  final bool isEnabled;
 
   const CustomFormField({
     Key? key,
     required this.controller,
     required this.labelText,
     required this.hintText,
-    required this.isEnabled,
     this.fieldType = FieldType.generic,
     this.textColor,
     this.borderColor,
@@ -35,7 +33,6 @@ class _CustomFormFieldState extends State<CustomFormField> {
   get labelText => widget.labelText;
   get hintText => widget.hintText;
   get fieldType => widget.fieldType;
-  get isEnabled => widget.isEnabled;
 
   bool isPasswordInvisible = true;
 
@@ -52,7 +49,6 @@ class _CustomFormFieldState extends State<CustomFormField> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
-        enabled: isEnabled,
         controller: controller,
         obscureText: (fieldType == FieldType.password) && isPasswordInvisible,
         autovalidateMode: AutovalidateMode.onUserInteraction,
