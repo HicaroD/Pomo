@@ -35,6 +35,7 @@ class FormManager {
   }
 
   bool isValid() {
+    if (formKey.currentState == null) return false;
     return formKey.currentState!.validate() && areControllersNotEmpty();
   }
 
@@ -59,10 +60,10 @@ class FormManager {
     return true;
   }
 
-  void fillFields(List<Pair<String, String>> fields) {
-    for (Pair<String, String> field in fields) {
-      fillFieldIfAvailable(field);
-    }
+  void fillFields(Map<String, String> formValues) {
+    formValues.forEach((key, value) {
+      fillFieldIfAvailable(Pair(key, value));
+    });
   }
 
   void fillFieldIfAvailable(Pair<String, String> field) {
@@ -96,10 +97,10 @@ class FormManager {
       formFields.add(
         CustomFormField(
           controller: form.controller,
+          hintText: form.hintText,
           labelText: form.labelText,
           textColor: textColor,
-          hintText: form.hintText,
-          isEnabled: form.isEnabled,
+          borderColor: borderColor,
         ),
       );
     });
