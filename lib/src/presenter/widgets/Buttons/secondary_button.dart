@@ -28,7 +28,10 @@ class SecondaryButton extends StatelessWidget {
       decoration: hasBottomBorder
           ? const BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: PomoColors.PRIMARY_WHITE),
+                bottom: BorderSide(
+                  color: PomoColors.PRIMARY_WHITE,
+                  width: 2,
+                ),
               ),
             )
           : null,
