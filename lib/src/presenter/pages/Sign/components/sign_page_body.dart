@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../widgets/Buttons/primary_button.dart';
@@ -64,6 +62,7 @@ class _SignPageBodyState extends State<SignPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        // TODO: extract this to a new widget to be more clear
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
