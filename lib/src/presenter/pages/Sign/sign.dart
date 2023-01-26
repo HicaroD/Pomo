@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/Buttons/primary_button.dart';
+import '../../widgets/Buttons/secondary_button.dart';
 import '../../widgets/FormManager/form_field_content.dart';
 import '../../widgets/FormManager/form_manager.dart';
-import 'components/sign_buttons.dart';
 import 'components/sign_header.dart';
 import '../../../utils/colors.dart';
 
@@ -50,6 +50,9 @@ class _SignPageState extends State<SignPage> {
       ),
     },
   );
+
+  bool _isSignInForm = true;
+
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -60,22 +63,42 @@ class _SignPageState extends State<SignPage> {
         color: PomoColors.SECONDARY_RED,
         child: Column(
           children: <Widget>[
-            const SizedBox(height: 15),
             const SignPageHeader(),
-            const SizedBox(height: 20),
-            const SignButtons(),
-            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                SecondaryButton(
+                  "Entrar",
+                  onPressed: () {
+                    setState(() {
+                      _isSignInForm = true;
+                    });
+                  },
+                  hasBottomBorder: _isSignInForm,
+                ),
+                SecondaryButton(
+                  "Registrar",
+                  onPressed: () {
+                    setState(() {
+                      _isSignInForm = false;
+                    });
+                  },
+                  hasBottomBorder: !_isSignInForm,
+                ),
+              ],
+            ),
             SizedBox(
               width: screenSize.width * 0.8,
               child: Column(
                 children: <Widget>[
-                  signInForms.buildForms(),
-                  const SizedBox(height: 30),
+                  _isSignInForm
+                      ? signInForms.buildForms()
+                      : signUpForms.buildForms(),
                   SizedBox(
                     width: 150,
                     child: PrimaryButton(
                       onPressed: () => print("CLICKING"),
-                      text: "Entrar",
+                      text: _isSignInForm ? "Entrar" : "Registrar",
                     ),
                   )
                 ],
