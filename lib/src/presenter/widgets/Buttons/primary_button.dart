@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:pomo_app/src/presenter/widgets/Text/custom_text.dart';
-import 'package:pomo_app/src/presenter/widgets/Text/font_family.dart';
+import '../Text/custom_text.dart';
+import '../Text/font_family.dart';
 
 class PrimaryButton extends StatelessWidget {
-  final VoidCallback callback;
-  final String hintText;
-
   const PrimaryButton({
     Key? key,
-    required this.callback,
-    required this.hintText,
+    required this.text,
+    this.activated = false,
+    this.onPressed,
   }) : super(key: key);
+
+  final bool activated;
+  final String text;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: callback,
-      child: CustomText(
-        hintText,
-        fontFamily: FontFamily.montserrat,
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
+      child: SizedBox(
+        height: 50,
+        child: ElevatedButton(
+          onPressed: activated ? onPressed : null,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+          ),
+          child: CustomText(
+            text,
+            fontSize: 16.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: FontFamily.montserrat,
+          ),
+        ),
       ),
     );
   }
