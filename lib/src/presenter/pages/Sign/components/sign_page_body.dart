@@ -99,13 +99,7 @@ class _SignPageBodyState extends State<SignPageBody> {
               SizedBox(
                 width: 150,
                 child: PrimaryButton(
-                  onPressed: () {
-                    Map<String, String> data = signInForms.data();
-                    if (!_isSignInForm) {
-                      data = signUpForms.data();
-                    }
-                    print(data);
-                  },
+                  onPressed: _sign,
                   text: _isSignInForm ? "Entrar" : "Registrar",
                 ),
               )
@@ -114,6 +108,14 @@ class _SignPageBodyState extends State<SignPageBody> {
         ),
       ],
     );
+  }
+
+  void _sign() {
+    Map<String, String> data = signInForms.data();
+    if (!_isSignInForm) {
+      data = signUpForms.data();
+    }
+    print(data);
   }
 
   @override
