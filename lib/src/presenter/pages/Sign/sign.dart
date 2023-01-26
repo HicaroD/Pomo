@@ -14,7 +14,7 @@ class SignPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Container(
-        color: PomoColors.SECONDARY_RED,
+        color: PomoColors.PRIMARY_RED,
         child: Column(
           children: <Widget>[
             const SignPageHeader(),

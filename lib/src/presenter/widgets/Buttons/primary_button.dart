@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomo_app/src/utils/colors.dart';
 import '../Text/custom_text.dart';
 import '../Text/font_family.dart';
 
@@ -28,7 +29,7 @@ class PrimaryButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
+            backgroundColor: PomoColors.SECONDARY_RED,
             shadowColor: Colors.transparent,
           ),
           child: CustomText(
