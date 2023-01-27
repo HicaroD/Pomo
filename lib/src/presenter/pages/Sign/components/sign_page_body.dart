@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:pomo_app/src/presenter/pages/Sign/components/sign_buttons.dart';
 
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/Buttons/secondary_button.dart';
@@ -62,31 +63,14 @@ class _SignPageBodyState extends State<SignPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // TODO: extract this to a new widget to be more clear
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            SecondaryButton(
-              "Entrar",
-              onPressed: () {
-                if (!mounted) return;
-                setState(() {
-                  _isSignInForm = true;
-                });
-              },
-              hasBottomBorder: _isSignInForm,
-            ),
-            SecondaryButton(
-              "Registrar",
-              onPressed: () {
-                if (!mounted) return;
-                setState(() {
-                  _isSignInForm = false;
-                });
-              },
-              hasBottomBorder: !_isSignInForm,
-            ),
-          ],
+        SignButtons(
+          isSignInForm: _isSignInForm,
+          onPressed: (isSignIn) {
+            if (!mounted) return;
+            setState(() {
+              _isSignInForm = isSignIn;
+            });
+          },
         ),
         SizedBox(
           width: screenSize.width * 0.8,
