@@ -1,8 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:pomo_app/src/presenter/pages/Sign/components/sign_buttons.dart';
 
+import 'sign_buttons.dart';
 import '../../../widgets/Buttons/primary_button.dart';
-import '../../../widgets/Buttons/secondary_button.dart';
 import '../../../widgets/FormManager/form_field_content.dart';
 import '../../../widgets/FormManager/form_manager.dart';
 
