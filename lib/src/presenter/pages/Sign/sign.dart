@@ -17,8 +17,13 @@ class SignPage extends StatelessWidget {
         color: PomoColors.PRIMARY_RED,
         child: Column(
           children: <Widget>[
-            const SignPageHeader(),
-            SignPageBody(screenSize: screenSize),
+            const Expanded(
+              child: SignPageHeader(),
+            ),
+            Expanded(
+              flex: 3,
+              child: SignPageBody(screenSize: screenSize),
+            ),
           ],
         ),
       ),

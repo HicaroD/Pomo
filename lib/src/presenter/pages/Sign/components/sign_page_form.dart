@@ -57,17 +57,20 @@ class _SignPageFormState extends State<SignPageForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _isSignInForm ? signInForms.buildForms() : signUpForms.buildForms(),
-        SizedBox(
-          width: 150,
-          child: PrimaryButton(
-            onPressed: _sign,
-            text: _isSignInForm ? "Entrar" : "Registrar",
-          ),
-        )
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          _isSignInForm ? signInForms.buildForms() : signUpForms.buildForms(),
+          const SizedBox(height: 30),
+          SizedBox(
+            width: 150,
+            child: PrimaryButton(
+              onPressed: _sign,
+              text: _isSignInForm ? "Entrar" : "Registrar",
+            ),
+          )
+        ],
+      ),
     );
   }
 
