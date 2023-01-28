@@ -40,7 +40,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
   void initState() {
     super.initState();
     controller.addListener(() {
-      setState(() {});
+      if (mounted) setState(() {});
     });
   }
 
