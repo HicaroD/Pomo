@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../../widgets/Buttons/primary_button.dart';
+import '../../../widgets/FormManager/form_field_content.dart';
 import '../../../widgets/FormManager/form_manager.dart';
 
 class SignPageForm extends StatefulWidget {
   final bool isSignInForm;
-  final FormManager signInForms;
-  final FormManager signUpForms;
 
   const SignPageForm({
     Key? key,
     required this.isSignInForm,
-    required this.signInForms,
-    required this.signUpForms,
   }) : super(key: key);
 
   @override
@@ -21,8 +18,42 @@ class SignPageForm extends StatefulWidget {
 
 class _SignPageFormState extends State<SignPageForm> {
   bool get _isSignInForm => widget.isSignInForm;
-  FormManager get signInForms => widget.signInForms;
-  FormManager get signUpForms => widget.signUpForms;
+
+  final signInForms = FormManager(
+    formKey: GlobalKey<FormState>(),
+    formContent: <String, FormFieldContent>{
+      "email": FormFieldContent(
+        labelText: "E-mail",
+        hintText: "Entre com seu e-mail",
+      ),
+      "password": FormFieldContent(
+        labelText: "Senha",
+        hintText: "Digite sua senha",
+      ),
+    },
+  );
+
+  final signUpForms = FormManager(
+    formKey: GlobalKey<FormState>(),
+    formContent: <String, FormFieldContent>{
+      "name": FormFieldContent(
+        labelText: "Nome",
+        hintText: "Digite seu nome completo",
+      ),
+      "username": FormFieldContent(
+        labelText: "Nome de usuário",
+        hintText: "Digite seu nome de usuário",
+      ),
+      "email": FormFieldContent(
+        labelText: "E-mail",
+        hintText: "Entre com seu e-mail",
+      ),
+      "password": FormFieldContent(
+        labelText: "Senha",
+        hintText: "Digite sua senha",
+      ),
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -48,5 +79,12 @@ class _SignPageFormState extends State<SignPageForm> {
       data = signUpForms.data();
     }
     print(data);
+  }
+
+  @override
+  void dispose() {
+    signInForms.disposeControllers();
+    signUpForms.disposeControllers();
+    super.dispose();
   }
 }
