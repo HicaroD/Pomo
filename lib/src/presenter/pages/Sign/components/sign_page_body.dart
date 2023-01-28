@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+import 'sign_page_form.dart';
 import 'sign_buttons.dart';
-import '../../../widgets/Buttons/primary_button.dart';
-import '../../../widgets/FormManager/form_field_content.dart';
-import '../../../widgets/FormManager/form_manager.dart';
 
 class SignPageBody extends StatefulWidget {
   final Size screenSize;
@@ -20,42 +18,6 @@ class SignPageBody extends StatefulWidget {
 class _SignPageBodyState extends State<SignPageBody> {
   Size get screenSize => widget.screenSize;
 
-  final signInForms = FormManager(
-    formKey: GlobalKey<FormState>(),
-    formContent: <String, FormFieldContent>{
-      "email": FormFieldContent(
-        labelText: "E-mail",
-        hintText: "Entre com seu e-mail",
-      ),
-      "password": FormFieldContent(
-        labelText: "Senha",
-        hintText: "Digite sua senha",
-      ),
-    },
-  );
-
-  final signUpForms = FormManager(
-    formKey: GlobalKey<FormState>(),
-    formContent: <String, FormFieldContent>{
-      "name": FormFieldContent(
-        labelText: "Nome",
-        hintText: "Digite seu nome completo",
-      ),
-      "username": FormFieldContent(
-        labelText: "Nome de usuário",
-        hintText: "Digite seu nome de usuário",
-      ),
-      "email": FormFieldContent(
-        labelText: "E-mail",
-        hintText: "Entre com seu e-mail",
-      ),
-      "password": FormFieldContent(
-        labelText: "Senha",
-        hintText: "Digite sua senha",
-      ),
-    },
-  );
-
   bool _isSignInForm = true;
 
   @override
@@ -65,45 +27,19 @@ class _SignPageBodyState extends State<SignPageBody> {
         SignButtons(
           isSignInForm: _isSignInForm,
           onPressed: (isSignIn) {
-            if (!mounted) return;
-            setState(() {
-              _isSignInForm = isSignIn;
-            });
+            if (mounted) {
+              setState(() {
+                _isSignInForm = isSignIn;
+              });
+            }
           },
         ),
+        const SizedBox(height: 30),
         SizedBox(
           width: screenSize.width * 0.8,
-          child: Column(
-            children: <Widget>[
-              _isSignInForm
-                  ? signInForms.buildForms()
-                  : signUpForms.buildForms(),
-              SizedBox(
-                width: 150,
-                child: PrimaryButton(
-                  onPressed: _sign,
-                  text: _isSignInForm ? "Entrar" : "Registrar",
-                ),
-              )
-            ],
-          ),
+          child: SignPageForm(isSignInForm: _isSignInForm),
         ),
       ],
     );
-  }
-
-  void _sign() {
-    Map<String, String> data = signInForms.data();
-    if (!_isSignInForm) {
-      data = signUpForms.data();
-    }
-    print(data);
-  }
-
-  @override
-  void dispose() {
-    signInForms.disposeControllers();
-    signUpForms.disposeControllers();
-    super.dispose();
   }
 }

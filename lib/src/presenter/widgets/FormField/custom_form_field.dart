@@ -27,12 +27,12 @@ class CustomFormField extends StatefulWidget {
 }
 
 class _CustomFormFieldState extends State<CustomFormField> {
-  get controller => widget.controller;
-  get textColor => widget.textColor;
-  get borderColor => widget.borderColor;
-  get labelText => widget.labelText;
-  get hintText => widget.hintText;
-  get fieldType => widget.fieldType;
+  TextEditingController get controller => widget.controller;
+  Color? get textColor => widget.textColor;
+  Color? get borderColor => widget.borderColor;
+  String get labelText => widget.labelText;
+  String get hintText => widget.hintText;
+  FieldType get fieldType => widget.fieldType;
 
   bool isPasswordInvisible = true;
 
@@ -40,7 +40,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
   void initState() {
     super.initState();
     controller.addListener(() {
-      setState(() {});
+      if (mounted) setState(() {});
     });
   }
 
