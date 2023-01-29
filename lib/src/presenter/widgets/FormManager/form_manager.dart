@@ -101,6 +101,7 @@ class FormManager {
           labelText: form.labelText,
           textColor: textColor,
           borderColor: borderColor,
+          fieldType: form.fieldType,
         ),
       );
     });

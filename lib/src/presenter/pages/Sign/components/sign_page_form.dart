@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../widgets/FormField/field_type.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormManager/form_field_content.dart';
 import '../../../widgets/FormManager/form_manager.dart';
@@ -25,10 +26,12 @@ class _SignPageFormState extends State<SignPageForm> {
       "email": FormFieldContent(
         labelText: "E-mail",
         hintText: "Entre com seu e-mail",
+        fieldType: FieldType.email,
       ),
       "password": FormFieldContent(
         labelText: "Senha",
         hintText: "Digite sua senha",
+        fieldType: FieldType.password,
       ),
     },
   );
@@ -47,10 +50,12 @@ class _SignPageFormState extends State<SignPageForm> {
       "email": FormFieldContent(
         labelText: "E-mail",
         hintText: "Entre com seu e-mail",
+        fieldType: FieldType.email,
       ),
       "password": FormFieldContent(
         labelText: "Senha",
         hintText: "Digite sua senha",
+        fieldType: FieldType.password,
       ),
     },
   );

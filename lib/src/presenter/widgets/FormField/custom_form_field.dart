@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pomo_app/src/utils/colors.dart';
 
+import '../../../utils/colors.dart';
 import 'field_type.dart';
 
 class CustomFormField extends StatefulWidget {
@@ -17,7 +17,7 @@ class CustomFormField extends StatefulWidget {
     required this.controller,
     required this.labelText,
     required this.hintText,
-    this.fieldType = FieldType.generic,
+    required this.fieldType,
     this.textColor,
     this.borderColor,
   }) : super(key: key);
@@ -34,7 +34,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
   String get hintText => widget.hintText;
   FieldType get fieldType => widget.fieldType;
 
-  bool isPasswordInvisible = true;
+  bool _isPasswordInvisible = true;
 
   @override
   void initState() {
@@ -47,10 +47,10 @@ class _CustomFormFieldState extends State<CustomFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: TextFormField(
         controller: controller,
-        obscureText: (fieldType == FieldType.password) && isPasswordInvisible,
+        obscureText: _isPasswordField() && _isPasswordInvisible,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         style: TextStyle(color: textColor ?? PomoColors.PRIMARY_WHITE),
         decoration: InputDecoration(
@@ -58,34 +58,68 @@ class _CustomFormFieldState extends State<CustomFormField> {
           hintText: hintText,
           hintStyle: const TextStyle(
             color: PomoColors.PRIMARY_GREY,
-            height: 2,
+            height: 1,
           ),
           labelStyle: const TextStyle(
             color: PomoColors.PRIMARY_WHITE,
           ),
           errorStyle: GoogleFonts.roboto(
-            textStyle: const TextStyle(color: PomoColors.PRIMARY_WHITE),
+            textStyle: const TextStyle(
+              color: PomoColors.PRIMARY_WHITE,
+            ),
           ),
           border: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
           enabledBorder: UnderlineInputBorder(
-            borderSide:
-                BorderSide(color: borderColor ?? PomoColors.PRIMARY_WHITE),
+            borderSide: BorderSide(
+              color: borderColor ?? PomoColors.PRIMARY_WHITE,
+            ),
           ),
           focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: PomoColors.PRIMARY_WHITE),
+            borderSide: BorderSide(
+              color: PomoColors.PRIMARY_WHITE,
+            ),
           ),
           disabledBorder: UnderlineInputBorder(
-            borderSide:
-                BorderSide(color: borderColor ?? PomoColors.PRIMARY_GREY),
+            borderSide: BorderSide(
+              color: borderColor ?? PomoColors.PRIMARY_GREY,
+            ),
           ),
           errorBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: PomoColors.PRIMARY_GREY),
+            borderSide: BorderSide(
+              color: PomoColors.PRIMARY_GREY,
+            ),
           ),
+          suffixIcon: _isPasswordField() ? _getPasswordVisibilityIcon() : null,
         ),
       ),
     );
+  }
+
+  GestureDetector _getPasswordVisibilityIcon() {
+    return GestureDetector(
+      onTap: _togglePasswordVisibility,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Icon(
+          _isPasswordInvisible ? Icons.visibility_off : Icons.visibility,
+          color: PomoColors.PRIMARY_WHITE,
+        ),
+      ),
+    );
+  }
+
+  void _togglePasswordVisibility() {
+    if (mounted) {
+      setState(() {
+        _isPasswordInvisible = !_isPasswordInvisible;
+      });
+    }
+  }
+
+  bool _isPasswordField() {
+    return fieldType == FieldType.password;
   }
 
   @override

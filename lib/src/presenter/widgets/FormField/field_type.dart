@@ -1,1 +1,1 @@
-enum FieldType { email, password, generic }
+enum FieldType { email, password, numeric, generic }
