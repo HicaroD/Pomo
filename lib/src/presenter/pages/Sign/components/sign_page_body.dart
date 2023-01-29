@@ -22,24 +22,26 @@ class _SignPageBodyState extends State<SignPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        SignButtons(
-          isSignInForm: _isSignInForm,
-          onPressed: (isSignIn) {
-            if (mounted) {
-              setState(() {
-                _isSignInForm = isSignIn;
-              });
-            }
-          },
-        ),
-        const SizedBox(height: 30),
-        SizedBox(
-          width: screenSize.width * 0.8,
-          child: SignPageForm(isSignInForm: _isSignInForm),
-        ),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          SignButtons(
+            isSignInForm: _isSignInForm,
+            onPressed: (isSignIn) {
+              if (mounted) {
+                setState(() {
+                  _isSignInForm = isSignIn;
+                });
+              }
+            },
+          ),
+          const SizedBox(height: 30),
+          SizedBox(
+            width: screenSize.width * 0.8,
+            child: SignPageForm(isSignInForm: _isSignInForm),
+          ),
+        ],
+      ),
     );
   }
 }
