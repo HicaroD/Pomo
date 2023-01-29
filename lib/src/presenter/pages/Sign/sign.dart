@@ -13,6 +13,7 @@ class SignPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: PomoColors.PRIMARY_RED,
         child: Column(
