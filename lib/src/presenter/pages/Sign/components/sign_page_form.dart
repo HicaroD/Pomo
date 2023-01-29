@@ -73,8 +73,6 @@ class _SignPageFormState extends State<SignPageForm> {
   }
 
   void _sign() {
-    if (!mounted) return;
-
     Map<String, String> data = signInForms.data();
     if (!_isSignInForm) {
       data = signUpForms.data();
