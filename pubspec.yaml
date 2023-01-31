@@ -36,6 +36,7 @@ dependencies:
   flutter_modular: ^5.0.3
   google_fonts: ^3.0.1
   flutter_svg: ^1.1.6
+  form_builder_validators: ^8.4.0
 
 dev_dependencies:
   flutter_test:
