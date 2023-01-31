@@ -102,6 +102,7 @@ class FormManager {
           textColor: textColor,
           borderColor: borderColor,
           fieldType: form.fieldType,
+          isRequiredField: form.isRequired,
         ),
       );
     });
