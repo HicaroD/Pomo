@@ -7,6 +7,8 @@ class FormFieldContent {
   final String labelText;
   final String hintText;
   final FieldType fieldType;
+
+  bool isRequired;
   bool isEnabled;
 
   FormFieldContent({
@@ -14,5 +16,6 @@ class FormFieldContent {
     required this.hintText,
     this.fieldType = FieldType.generic,
     this.isEnabled = true,
+    this.isRequired = true,
   });
 }
