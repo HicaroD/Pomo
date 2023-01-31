@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'field_validators.dart';
 import '../../../utils/colors.dart';
 import 'field_type.dart';
 
@@ -12,12 +14,15 @@ class CustomFormField extends StatefulWidget {
   final Color? textColor;
   final Color? borderColor;
 
+  final bool isRequiredField;
+
   const CustomFormField({
     Key? key,
     required this.controller,
     required this.labelText,
     required this.hintText,
     required this.fieldType,
+    required this.isRequiredField,
     this.textColor,
     this.borderColor,
   }) : super(key: key);
@@ -33,6 +38,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
   String get labelText => widget.labelText;
   String get hintText => widget.hintText;
   FieldType get fieldType => widget.fieldType;
+  bool get isRequiredField => widget.isRequiredField;
 
   bool _isPasswordInvisible = true;
 
@@ -53,6 +59,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
         obscureText: _isPasswordField() && _isPasswordInvisible,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         style: TextStyle(color: textColor ?? PomoColors.PRIMARY_WHITE),
+        validator: _getValidators(),
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
@@ -65,11 +72,16 @@ class _CustomFormFieldState extends State<CustomFormField> {
           ),
           errorStyle: GoogleFonts.roboto(
             textStyle: const TextStyle(
-              color: PomoColors.PRIMARY_WHITE,
+              color: PomoColors.PRIMARY_YELLOW,
             ),
           ),
           border: UnderlineInputBorder(
             borderRadius: BorderRadius.circular(5.0),
+          ),
+          focusedErrorBorder: const UnderlineInputBorder(
+            borderSide: BorderSide(
+              color: PomoColors.PRIMARY_YELLOW,
+            ),
           ),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
@@ -88,7 +100,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           ),
           errorBorder: const UnderlineInputBorder(
             borderSide: BorderSide(
-              color: PomoColors.PRIMARY_GREY,
+              color: PomoColors.PRIMARY_YELLOW,
             ),
           ),
           suffixIcon: _isPasswordField() ? _getPasswordVisibilityIcon() : null,
@@ -120,6 +132,15 @@ class _CustomFormFieldState extends State<CustomFormField> {
 
   bool _isPasswordField() {
     return fieldType == FieldType.password;
+  }
+
+  String? Function(String?) _getValidators() {
+    return FormBuilderValidators.compose(
+      [
+        isRequiredField ? FormFieldValidators.REQUIRED_VALIDATOR : (_) => null,
+        FormFieldValidators.VALIDATORS[fieldType] ?? (_) => null,
+      ],
+    );
   }
 
   @override
