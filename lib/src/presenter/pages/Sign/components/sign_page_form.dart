@@ -102,6 +102,7 @@ class _SignPageFormState extends State<SignPageForm> {
     print(data);
   }
 
+  // TODO: maybe create two methods for handling each form?
   void _isButtonActivated() {
     if (mounted) {
       setState(() {
