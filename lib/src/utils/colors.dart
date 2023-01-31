@@ -8,4 +8,5 @@ class PomoColors {
   static const PRIMARY_BLACK = Color(0xFF0D0D0D);
   static const PRIMARY_GREEN = Color(0xFF1BE35A);
   static const SECONDARY_GREEN = Color(0xFF8ABF3B);
+  static const PRIMARY_YELLOW = Color(0xFFFECC00);
 }
