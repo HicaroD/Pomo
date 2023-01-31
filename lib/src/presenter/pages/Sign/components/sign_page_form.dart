@@ -60,6 +60,16 @@ class _SignPageFormState extends State<SignPageForm> {
     },
   );
 
+  bool _isSignInBttnActivated = false;
+  bool _isSignUpBttnActivated = false;
+
+  @override
+  void initState() {
+    super.initState();
+    signInForms.addListener(_isButtonActivated);
+    signUpForms.addListener(_isButtonActivated);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -68,21 +78,41 @@ class _SignPageFormState extends State<SignPageForm> {
         const SizedBox(height: 30),
         SizedBox(
           width: 150,
-          child: PrimaryButton(
-            onPressed: _sign,
-            text: _isSignInForm ? "Entrar" : "Registrar",
-          ),
+          child: _isSignInForm
+              ? PrimaryButton(
+                  onPressed: _isSignInBttnActivated ? _signIn : null,
+                  text: "Entrar",
+                )
+              : PrimaryButton(
+                  onPressed: _isSignUpBttnActivated ? _signUp : null,
+                  text: "Registrar",
+                ),
         )
       ],
     );
   }
 
-  void _sign() {
+  void _signIn() {
     Map<String, String> data = signInForms.data();
-    if (!_isSignInForm) {
-      data = signUpForms.data();
-    }
     print(data);
+  }
+
+  void _signUp() {
+    Map<String, String> data = signUpForms.data();
+    print(data);
+  }
+
+  // TODO: maybe create two methods for handling each form?
+  void _isButtonActivated() {
+    if (mounted) {
+      setState(() {
+        if (_isSignInForm) {
+          _isSignInBttnActivated = signInForms.isValid();
+          return;
+        }
+        _isSignUpBttnActivated = signUpForms.isValid();
+      });
+    }
   }
 
   @override

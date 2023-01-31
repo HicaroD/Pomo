@@ -53,9 +53,7 @@ class FormManager {
 
   bool areControllersNotEmpty() {
     for (final form in formContent.values) {
-      if (form.controller.text.isEmpty) {
-        return false;
-      }
+      if (form.controller.text.isEmpty) return false;
     }
     return true;
   }
@@ -102,6 +100,7 @@ class FormManager {
           textColor: textColor,
           borderColor: borderColor,
           fieldType: form.fieldType,
+          isRequiredField: form.isRequired,
         ),
       );
     });
