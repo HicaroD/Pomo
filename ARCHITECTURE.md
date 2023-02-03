@@ -11,20 +11,19 @@ There are other folders besides `lib`, but it is not related to our code directl
 
 ### Folder architecture
 
-
 ```
-lib
+lib/
 └── src
     ├── core
     ├── features
     │   ├── data
     │   ├── domain
     │   └── presenter
-    └── presenter
-        ├── components
-        ├── pages
-            ... All implementations related to each page ...
-        └── widgets
+    ├── presenter
+    │   ├── components
+    │   ├── pages
+    │   └── widgets
+    └── utils
 ```
 
 TODO.
