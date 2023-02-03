@@ -29,8 +29,9 @@ class PrimaryButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: PomoColors.SECONDARY_RED,
             shadowColor: Colors.transparent,
+            disabledBackgroundColor: PomoColors.SECONDARY_RED,
+            backgroundColor: PomoColors.SECONDARY_GREY.withOpacity(0.12),
           ),
           child: CustomText(
             text,
