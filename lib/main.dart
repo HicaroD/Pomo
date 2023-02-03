@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/services.dart';
-import 'package:pomo_app/src/utils/colors.dart';
 
+import 'src/utils/colors.dart';
 import 'app_module.dart';
 import 'app_widget.dart';
 

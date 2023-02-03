@@ -12,9 +12,9 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
     required this.text,
+    required this.onPressed,
     this.width,
     this.height,
-    this.onPressed,
   }) : super(key: key);
 
   @override
