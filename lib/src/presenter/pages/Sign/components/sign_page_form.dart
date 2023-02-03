@@ -4,6 +4,7 @@ import '../../../widgets/FormField/field_type.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormManager/form_field_content.dart';
 import '../../../widgets/FormManager/form_manager.dart';
+import 'forgot_password_button.dart';
 
 class SignPageForm extends StatefulWidget {
   final bool isSignInForm;
@@ -87,7 +88,9 @@ class _SignPageFormState extends State<SignPageForm> {
                   onPressed: _isSignUpBttnActivated ? _signUp : null,
                   text: "Registrar",
                 ),
-        )
+        ),
+        const SizedBox(height: 35),
+        _isSignInForm ? const ForgotPasswordButton() : const SizedBox(),
       ],
     );
   }
