@@ -116,7 +116,9 @@ class _CustomFormFieldState extends State<CustomFormField> {
         padding: const EdgeInsets.only(top: 20),
         child: Icon(
           _isPasswordInvisible ? Icons.visibility_off : Icons.visibility,
-          color: PomoColors.PRIMARY_WHITE,
+          color: _isPasswordInvisible
+              ? PomoColors.PRIMARY_GREY
+              : PomoColors.PRIMARY_WHITE,
         ),
       ),
     );
