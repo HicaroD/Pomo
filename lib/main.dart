@@ -13,8 +13,7 @@ void main() {
 class PomoApp extends StatelessWidget {
   const PomoApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+  void _preconfigureApp() {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
@@ -25,6 +24,11 @@ class PomoApp extends StatelessWidget {
         systemNavigationBarColor: PomoColors.PRIMARY_RED,
       ),
     );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _preconfigureApp();
 
     return ModularApp(
       module: AppModule(),
