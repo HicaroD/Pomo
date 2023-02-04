@@ -9,10 +9,7 @@ class ForgotPasswordButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        // TODO: implement forgot password functionality
-        print("FORGOT PASSWORD");
-      },
+      onPressed: () {},
       child: const CustomText(
         "Esqueceu sua senha?",
         fontWeight: FontWeight.bold,

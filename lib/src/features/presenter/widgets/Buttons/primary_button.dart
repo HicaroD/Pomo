@@ -12,9 +12,9 @@ class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     Key? key,
     required this.text,
+    required this.onPressed,
     this.width,
     this.height,
-    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -29,8 +29,9 @@ class PrimaryButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            backgroundColor: PomoColors.SECONDARY_RED,
             shadowColor: Colors.transparent,
+            disabledBackgroundColor: PomoColors.SECONDARY_RED,
+            backgroundColor: PomoColors.SECONDARY_GREY.withOpacity(0.12),
           ),
           child: CustomText(
             text,
