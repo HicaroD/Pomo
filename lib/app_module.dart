@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'src/presenter/pages/Sign/sign.dart';
-import 'src/presenter/pages/Home/home.dart';
+import 'src/features/presenter/pages/Sign/sign.dart';
+import 'src/features/presenter/pages/Home/home.dart';
 
 class AppModule extends Module {
   @override

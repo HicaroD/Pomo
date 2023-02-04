@@ -3,7 +3,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'field_validators.dart';
-import '../../../utils/colors.dart';
+import '../../../../utils/colors.dart';
 import 'field_type.dart';
 
 class CustomFormField extends StatefulWidget {
