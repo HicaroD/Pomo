@@ -44,7 +44,7 @@ class HttpClient implements IHttpClient {
     final http.Response response = await _httpClient.post(
       uri,
       headers: headers ?? {},
-      body: body,
+      body: body ?? {},
     );
 
     return HttpResponse(
@@ -66,7 +66,7 @@ class HttpClient implements IHttpClient {
     final http.Response response = await _httpClient.put(
       uri,
       headers: headers ?? {},
-      body: body,
+      body: body ?? {},
     );
 
     return HttpResponse(
@@ -109,7 +109,7 @@ class HttpClient implements IHttpClient {
     final http.Response response = await _httpClient.delete(
       uri,
       headers: headers ?? {},
-      body: body,
+      body: body ?? {},
     );
 
     return HttpResponse(
