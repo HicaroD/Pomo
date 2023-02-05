@@ -26,8 +26,8 @@ class UserModel extends UserEntity {
     email = json['email']!;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+  Map<String, String> toJson() {
+    final Map<String, String> data = <String, String>{};
     data['id'] = id;
     data['name'] = name;
     data['username'] = username;
