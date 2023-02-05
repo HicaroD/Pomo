@@ -79,6 +79,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
     await signUpStore.signUp(credentials);
     // TODO: handle errors and show appropriate alert dialog
+    // TODO: store JWT token to use on subsequent request
 
     print(signUpStore.state);
   }
