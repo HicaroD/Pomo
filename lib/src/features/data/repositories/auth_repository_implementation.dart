@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
+
 import '../../../core/errors/exceptions.dart';
 import '../../../core/errors/failures.dart';
 import '../../domain/datasources/auth_datasource_interface.dart';
@@ -16,46 +18,48 @@ class AuthRepositoryImpl implements IAuthRepository {
   AuthRepositoryImpl(this.authDatasource);
 
   @override
-  Future<String> signIn(SignInCredentialsEntity credentials) async {
+  Future<Either<Failure, String>> signIn(
+      SignInCredentialsEntity credentials) async {
     if (!credentials.isValid()) {
       throw InvalidCredentialsFormatFailure();
     }
 
     try {
       String token = await authDatasource.signIn(credentials);
-      return token;
+      return Right(token);
     } on InvalidCredentialsException {
-      throw InvalidCredentialsFailure();
+      throw Left(InvalidCredentialsFailure());
     } on ServerException {
-      throw ServerFailure();
+      throw Left(ServerFailure());
     } on SignInException {
-      throw SignInFailure();
+      throw Left(SignInFailure());
     } on TimeoutException {
-      throw TimeoutFailure();
+      throw Left(TimeoutFailure());
     } on SocketException {
-      throw NoInternetConnectionFailure();
+      throw Left(NoInternetConnectionFailure());
     }
   }
 
   @override
-  Future<UserEntity> signUp(SignUpCredentialsEntity credentials) async {
+  Future<Either<Failure, UserEntity>> signUp(
+      SignUpCredentialsEntity credentials) async {
     if (!credentials.isValid()) {
       throw InvalidCredentialsFormatFailure();
     }
 
     try {
       UserModel createdUser = await authDatasource.signUp(credentials);
-      return createdUser;
+      return Right(createdUser);
     } on CredentialsAlreadyInUseException {
-      throw CredentialsAlreadyInUseFailure();
+      throw Left(CredentialsAlreadyInUseFailure());
     } on ServerException {
-      throw ServerFailure();
+      throw Left(ServerFailure());
     } on SignUpException {
-      throw SignUpFailure();
+      throw Left(SignUpFailure());
     } on TimeoutException {
-      throw TimeoutFailure();
+      throw Left(TimeoutFailure());
     } on SocketException {
-      throw NoInternetConnectionFailure();
+      throw Left(NoInternetConnectionFailure());
     }
   }
 }
