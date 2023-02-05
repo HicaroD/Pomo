@@ -13,7 +13,7 @@ class UserModel extends UserEntity {
           email: email,
         );
 
-  UserModel.fromJson(Map<String, String> json)
+  UserModel.fromJson(Map<String, dynamic> json)
       : super(
           id: json['id']!,
           name: json['name']!,

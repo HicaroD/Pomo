@@ -4,12 +4,12 @@ class SignUpCredentialsEntity {
   final String email;
   final String password;
 
-  SignUpCredentialsEntity(
-    this.name,
-    this.username,
-    this.email,
-    this.password,
-  );
+  SignUpCredentialsEntity({
+    required this.name,
+    required this.username,
+    required this.email,
+    required this.password,
+  });
 
   // TODO: improve validation function
   bool isValid() {

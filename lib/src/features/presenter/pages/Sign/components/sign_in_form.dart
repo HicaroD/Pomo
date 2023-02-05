@@ -71,8 +71,7 @@ class _SignInFormState extends State<SignInForm> {
     );
     await signInStore.signIn(credentials);
     // TODO: handle errors and show appropriate alert dialog
-
-    print(signInStore.state);
+    // TODO: store JWT token to use on subsequent request
   }
 
   void _isButtonActivated() {
