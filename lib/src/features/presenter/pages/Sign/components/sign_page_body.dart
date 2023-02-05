@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-import 'sign_page_form.dart';
 import 'sign_buttons.dart';
+import 'sign_in_form.dart';
+import 'sign_up_form.dart';
 
 class SignPageBody extends StatefulWidget {
   final Size screenSize;
@@ -38,7 +39,7 @@ class _SignPageBodyState extends State<SignPageBody> {
           const SizedBox(height: 30),
           SizedBox(
             width: screenSize.width * 0.8,
-            child: SignPageForm(isSignInForm: _isSignInForm),
+            child: _isSignInForm ? const SignInForm() : const SignUpForm(),
           ),
         ],
       ),
