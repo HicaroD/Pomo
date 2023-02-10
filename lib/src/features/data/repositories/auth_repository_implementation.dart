@@ -6,10 +6,10 @@ import 'package:dartz/dartz.dart';
 import '../../../core/errors/exceptions.dart';
 import '../../../core/errors/failures.dart';
 import '../../domain/datasources/auth_datasource_interface.dart';
-import '../../domain/entities/sign_in_credentials_entity.dart';
-import '../../domain/entities/sign_up_credentials_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repository_interface.dart';
+import '../../domain/usecases/user_sign_in_usecase.dart';
+import '../../domain/usecases/user_sign_up_usecase.dart';
 import '../models/user_model.dart';
 
 class AuthRepositoryImpl implements IAuthRepository {
@@ -18,9 +18,8 @@ class AuthRepositoryImpl implements IAuthRepository {
   AuthRepositoryImpl(this.authDatasource);
 
   @override
-  Future<Either<Failure, String>> signIn(
-      SignInCredentialsEntity credentials) async {
-    if (!credentials.isValid()) {
+  Future<Either<Failure, String>> signIn(SignInParams credentials) async {
+    if (credentials.email.isEmpty || credentials.password.isEmpty) {
       throw InvalidCredentialsFormatFailure();
     }
 
@@ -41,9 +40,11 @@ class AuthRepositoryImpl implements IAuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signUp(
-      SignUpCredentialsEntity credentials) async {
-    if (!credentials.isValid()) {
+  Future<Either<Failure, UserEntity>> signUp(SignUpParams credentials) async {
+    // TODO: refactor this
+    if (credentials.email.isEmpty ||
+        credentials.name.isEmpty ||
+        credentials.username.isEmpty) {
       throw InvalidCredentialsFormatFailure();
     }
 

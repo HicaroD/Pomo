@@ -1,7 +1,6 @@
 import 'package:flutter_triple/flutter_triple.dart';
 
 import '../../../core/errors/failures.dart';
-import '../../domain/entities/sign_up_credentials_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/usecases/user_sign_up_usecase.dart';
 
@@ -18,7 +17,7 @@ class SignUpStore extends NotifierStore<Failure, UserEntity> {
           ),
         );
 
-  signUp(SignUpCredentialsEntity credentials) async {
+  signUp(SignUpParams credentials) async {
     setLoading(true);
     final response = await signUpUsecase(credentials);
     response.fold(

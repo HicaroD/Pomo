@@ -1,7 +1,6 @@
 import 'package:flutter_triple/flutter_triple.dart';
 
 import '../../../core/errors/failures.dart';
-import '../../domain/entities/sign_in_credentials_entity.dart';
 import '../../domain/usecases/user_sign_in_usecase.dart';
 
 class SignInStore extends NotifierStore<Failure, String> {
@@ -9,7 +8,7 @@ class SignInStore extends NotifierStore<Failure, String> {
 
   SignInStore(this.signInUsecase) : super("");
 
-  signIn(SignInCredentialsEntity credentials) async {
+  signIn(SignInParams credentials) async {
     setLoading(true);
     final response = await signInUsecase(credentials);
     response.fold(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../../../domain/entities/sign_in_credentials_entity.dart';
+import '../../../../domain/usecases/user_sign_in_usecase.dart';
 import '../../../store/sign_in_store.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormField/field_type.dart';
@@ -65,9 +65,9 @@ class _SignInFormState extends State<SignInForm> {
   void _signIn() async {
     Map<String, String> data = signInForms.data();
     print(data);
-    final credentials = SignInCredentialsEntity(
-      data["email"]!,
-      data["password"]!,
+    final credentials = SignInParams(
+      email: data["email"]!,
+      password: data["password"]!,
     );
     await signInStore.signIn(credentials);
     // TODO: handle errors and show appropriate alert dialog

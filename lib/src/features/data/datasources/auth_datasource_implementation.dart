@@ -3,9 +3,9 @@ import '../../../core/http_client/http_client_interface.dart';
 import '../../../core/http_client/http_response.dart';
 import '../../../utils/api_endpoints.dart';
 import '../../domain/datasources/auth_datasource_interface.dart';
-import '../../domain/entities/sign_up_credentials_entity.dart';
+import '../../domain/usecases/user_sign_in_usecase.dart';
+import '../../domain/usecases/user_sign_up_usecase.dart';
 import '../models/user_model.dart';
-import '../../domain/entities/sign_in_credentials_entity.dart';
 
 class AuthDatasourceImpl implements IAuthDatasource {
   final IHttpClient httpClient;
@@ -13,7 +13,7 @@ class AuthDatasourceImpl implements IAuthDatasource {
   AuthDatasourceImpl(this.httpClient);
 
   @override
-  Future<String> signIn(SignInCredentialsEntity credentials) async {
+  Future<String> signIn(SignInParams credentials) async {
     HttpResponse response = await httpClient.post(
       SIGN_IN_ENDPOINT,
       body: {
@@ -36,7 +36,7 @@ class AuthDatasourceImpl implements IAuthDatasource {
   }
 
   @override
-  Future<UserModel> signUp(SignUpCredentialsEntity credentials) async {
+  Future<UserModel> signUp(SignUpParams credentials) async {
     HttpResponse response = await httpClient.post(
       SIGN_UP_ENDPOINT,
       body: {

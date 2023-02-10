@@ -1,8 +1,8 @@
 import '../../data/models/user_model.dart';
-import '../entities/sign_in_credentials_entity.dart';
-import '../entities/sign_up_credentials_entity.dart';
+import '../usecases/user_sign_in_usecase.dart';
+import '../usecases/user_sign_up_usecase.dart';
 
 abstract class IAuthDatasource {
-  Future<String> signIn(SignInCredentialsEntity credentials);
-  Future<UserModel> signUp(SignUpCredentialsEntity credentials);
+  Future<String> signIn(SignInParams credentials);
+  Future<UserModel> signUp(SignUpParams credentials);
 }

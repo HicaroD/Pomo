@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../domain/entities/sign_up_credentials_entity.dart';
+import '../../../../domain/usecases/user_sign_up_usecase.dart';
 import '../../../store/sign_up_store.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormField/field_type.dart';
@@ -70,7 +70,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
   void _signUp() async {
     Map<String, String> data = signUpForms.data();
-    final credentials = SignUpCredentialsEntity(
+    final credentials = SignUpParams(
       name: data["name"]!,
       username: data["username"]!,
       email: data["email"]!,
