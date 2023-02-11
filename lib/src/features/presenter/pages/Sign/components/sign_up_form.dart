@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../domain/usecases/user_sign_up_usecase.dart';
-import '../../../store/sign_up_store.dart';
+import '../../../bloc/sign_bloc/sign_bloc.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormField/field_type.dart';
 import '../../../widgets/FormManager/form_field_content.dart';
@@ -42,12 +42,9 @@ class _SignUpFormState extends State<SignUpForm> {
 
   bool _isSignButtonActivated = false;
 
-  late SignUpStore signUpStore;
-
   @override
   void initState() {
     super.initState();
-    signUpStore = Modular.get<SignUpStore>();
     signUpForms.addListener(_isButtonActivated);
   }
 
@@ -76,12 +73,8 @@ class _SignUpFormState extends State<SignUpForm> {
       email: data["email"]!,
       password: data["password"]!,
     );
-
-    await signUpStore.signUp(credentials);
-    // TODO: handle errors and show appropriate alert dialog
+    context.read<SignBloc>().add(SignUpRequestEvent(credentials));
     // TODO: store JWT token to use on subsequent request
-
-    print(signUpStore.state);
   }
 
   void _isButtonActivated() {

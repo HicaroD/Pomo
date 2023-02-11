@@ -69,6 +69,7 @@ class _CustomFormFieldState extends State<CustomFormField> {
           ),
           labelStyle: const TextStyle(
             color: PomoColors.PRIMARY_WHITE,
+            fontWeight: FontWeight.bold,
           ),
           errorStyle: GoogleFonts.roboto(
             textStyle: const TextStyle(

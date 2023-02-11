@@ -39,7 +39,9 @@ dependencies:
   form_builder_validators: ^8.4.0
   http: ^0.13.5
   dartz: ^0.10.1
-  flutter_triple: ^1.2.7+4
+    
+  bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
 
 dev_dependencies:
   flutter_test:
