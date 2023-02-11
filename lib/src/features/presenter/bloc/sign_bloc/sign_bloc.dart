@@ -11,10 +11,12 @@ class SignBloc extends Bloc<SignEvent, SignState> {
     on<SignInRequestEvent>((event, emit) {
       // TODO: access repository to do sign in
       print("SIGN IN REQUEST EVENT");
+      print(event.params);
     });
     on<SignUpRequestEvent>((event, emit) {
       // TODO: access repository to do sign up
       print("SIGN UP REQUEST EVENT");
+      print(event.params);
     });
   }
 }

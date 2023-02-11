@@ -63,7 +63,6 @@ class _SignInFormState extends State<SignInForm> {
 
   void _signIn() async {
     Map<String, String> data = signInForms.data();
-    print(data);
     final credentials = SignInParams(
       email: data["email"]!,
       password: data["password"]!,

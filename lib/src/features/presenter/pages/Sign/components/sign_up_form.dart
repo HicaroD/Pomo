@@ -41,7 +41,7 @@ class _SignUpFormState extends State<SignUpForm> {
   );
 
   bool _isSignButtonActivated = false;
-  late final SignBloc signBloc;
+  late SignBloc signBloc;
 
   @override
   void initState() {
