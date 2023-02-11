@@ -1,11 +1,15 @@
+import '../../domain/usecases/user_sign_in_usecase.dart';
 import '../../../core/errors/exceptions.dart';
 import '../../../core/http_client/http_client_interface.dart';
 import '../../../core/http_client/http_response.dart';
 import '../../../utils/api_endpoints.dart';
-import '../../domain/datasources/auth_datasource_interface.dart';
-import '../../domain/usecases/user_sign_in_usecase.dart';
 import '../../domain/usecases/user_sign_up_usecase.dart';
 import '../models/user_model.dart';
+
+abstract class IAuthDatasource {
+  Future<String> signIn(SignInParams credentials);
+  Future<UserModel> signUp(SignUpParams credentials);
+}
 
 class AuthDatasourceImpl implements IAuthDatasource {
   final IHttpClient httpClient;

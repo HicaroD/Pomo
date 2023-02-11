@@ -5,11 +5,11 @@ import 'package:dartz/dartz.dart';
 
 import '../../../core/errors/exceptions.dart';
 import '../../../core/errors/failures.dart';
-import '../../domain/datasources/auth_datasource_interface.dart';
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repositories/auth_repository_interface.dart';
 import '../../domain/usecases/user_sign_in_usecase.dart';
 import '../../domain/usecases/user_sign_up_usecase.dart';
+import '../datasources/auth_datasource_implementation.dart';
 import '../models/user_model.dart';
 
 class AuthRepositoryImpl implements IAuthRepository {
