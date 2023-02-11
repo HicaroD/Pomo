@@ -33,11 +33,13 @@ class _SignInFormState extends State<SignInForm> {
   );
 
   bool _isSignButtonActivated = false;
+  late final SignBloc signBloc;
 
   @override
   void initState() {
     super.initState();
     signInForms.addListener(_isButtonActivated);
+    signBloc = context.read<SignBloc>();
   }
 
   @override
@@ -66,7 +68,7 @@ class _SignInFormState extends State<SignInForm> {
       email: data["email"]!,
       password: data["password"]!,
     );
-    context.read<SignBloc>().add(SignInRequestEvent(credentials));
+    signBloc.add(SignInRequestEvent(credentials));
     // TODO: store JWT token to use on subsequent request
   }
 
@@ -81,6 +83,7 @@ class _SignInFormState extends State<SignInForm> {
   @override
   void dispose() {
     signInForms.disposeControllers();
+    signBloc.close();
     super.dispose();
   }
 }
