@@ -20,7 +20,10 @@ class AppModule extends Module {
         Bind.singleton(((i) => UserSignUpUsecase(i()))),
         Bind.singleton(((i) => AuthDatasourceImpl(i()))),
         Bind.singleton(((i) => AuthRepositoryImpl(i()))),
-        Bind.singleton(((i) => SignBloc())),
+        Bind.singleton(((i) => SignBloc(
+              userSignInUsecase: i(),
+              userSignUpUsecase: i(),
+            ))),
         Bind.singleton((_) => client)
       ];
 

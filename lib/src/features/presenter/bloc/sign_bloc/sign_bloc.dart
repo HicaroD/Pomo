@@ -7,16 +7,19 @@ part 'sign_event.dart';
 part 'sign_state.dart';
 
 class SignBloc extends Bloc<SignEvent, SignState> {
-  SignBloc() : super(SignInitial()) {
+  final UserSignInUsecase userSignInUsecase;
+  final UserSignUpUsecase userSignUpUsecase;
+
+  SignBloc({
+    required this.userSignInUsecase,
+    required this.userSignUpUsecase,
+  }) : super(SignInitial()) {
     on<SignInRequestEvent>((event, emit) {
-      // TODO: access repository to do sign in
       print("SIGN IN REQUEST EVENT");
-      print(event.params);
     });
     on<SignUpRequestEvent>((event, emit) {
       // TODO: access repository to do sign up
       print("SIGN UP REQUEST EVENT");
-      print(event.params);
     });
   }
 }

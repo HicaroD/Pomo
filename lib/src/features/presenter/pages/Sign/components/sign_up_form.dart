@@ -90,7 +90,6 @@ class _SignUpFormState extends State<SignUpForm> {
   @override
   void dispose() {
     signUpForms.disposeControllers();
-    signBloc.close();
     super.dispose();
   }
 }

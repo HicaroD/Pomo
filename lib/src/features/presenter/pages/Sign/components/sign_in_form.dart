@@ -82,7 +82,6 @@ class _SignInFormState extends State<SignInForm> {
   @override
   void dispose() {
     signInForms.disposeControllers();
-    signBloc.close();
     super.dispose();
   }
 }
