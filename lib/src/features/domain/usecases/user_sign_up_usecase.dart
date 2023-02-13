@@ -28,4 +28,8 @@ class SignUpParams {
     required this.email,
     required this.password,
   });
+
+  bool areEmpty() {
+    return name.isEmpty | username.isEmpty | email.isEmpty | password.isEmpty;
+  }
 }

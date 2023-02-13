@@ -41,10 +41,7 @@ class AuthRepositoryImpl implements IAuthRepository {
 
   @override
   Future<Either<Failure, UserEntity>> signUp(SignUpParams credentials) async {
-    // TODO: refactor this
-    if (credentials.email.isEmpty ||
-        credentials.name.isEmpty ||
-        credentials.username.isEmpty) {
+    if (credentials.areEmpty()) {
       throw InvalidCredentialsFormatFailure();
     }
 
