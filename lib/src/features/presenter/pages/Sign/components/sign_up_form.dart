@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../../../../domain/usecases/user_sign_up_usecase.dart';
+import '../../../../../core/params/sign_up_params.dart';
 import '../../../bloc/sign_bloc/sign_bloc.dart';
 import '../../../widgets/Buttons/primary_button.dart';
 import '../../../widgets/FormField/field_type.dart';

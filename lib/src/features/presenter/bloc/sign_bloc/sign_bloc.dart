@@ -2,6 +2,8 @@ import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failures.dart';
+import '../../../../core/params/sign_in_params.dart';
+import '../../../../core/params/sign_up_params.dart';
 import '../../../domain/usecases/user_sign_in_usecase.dart';
 import '../../../domain/usecases/user_sign_up_usecase.dart';
 

@@ -1,9 +1,9 @@
-import '../../domain/usecases/user_sign_in_usecase.dart';
+import '../../../core/params/sign_in_params.dart';
 import '../../../core/errors/exceptions.dart';
 import '../../../core/http_client/http_client_interface.dart';
 import '../../../core/http_client/http_response.dart';
+import '../../../core/params/sign_up_params.dart';
 import '../../../utils/api_endpoints.dart';
-import '../../domain/usecases/user_sign_up_usecase.dart';
 import '../models/user_model.dart';
 
 abstract class IAuthDatasource {

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../core/errors/failures.dart';
+import '../../../core/params/sign_in_params.dart';
 import '../../../core/usecase/usecase_interface.dart';
 import '../repositories/auth_repository_interface.dart';
 
@@ -12,19 +13,5 @@ class UserSignInUsecase implements IUseCase<String, SignInParams> {
   @override
   Future<Either<Failure, String>> call(SignInParams input) async {
     return await authRepository.signIn(input);
-  }
-}
-
-class SignInParams {
-  final String email;
-  final String password;
-
-  SignInParams({
-    required this.email,
-    required this.password,
-  });
-
-  bool areEmpty() {
-    return email.isEmpty | password.isEmpty;
   }
 }
