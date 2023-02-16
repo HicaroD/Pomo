@@ -22,8 +22,6 @@ class SignBloc extends Bloc<SignEvent, SignState> {
       final Either<Failure, String> result =
           await userSignInUsecase(event.params);
 
-      print(result);
-
       return emit(result.fold(
         (failure) => _handleSignInFailure(failure),
         (token) => SignInSuccessfulState(token),
@@ -32,6 +30,7 @@ class SignBloc extends Bloc<SignEvent, SignState> {
 
     on<SignUpRequestEvent>((event, emit) async {
       final result = await userSignUpUsecase(event.params);
+
       return emit(result.fold(
         (failure) => _handleSignUpFailure(failure),
         (_) => SignUpSuccessfulState(),
