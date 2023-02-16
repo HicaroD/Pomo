@@ -28,14 +28,7 @@ class _SignPageBodyState extends State<SignPageBody> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<SignBloc, SignState>(
-      listener: (context, state) {
-        if (state is SignInSuccessfulState) {
-          Modular.to.navigate(AppRoutes.home.path);
-        }
-        if (state is SignUpSuccessfulState) {
-          // TODO: show success pop-up for registration
-        }
-      },
+      listener: (context, state) => _handleSignState(state),
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -58,5 +51,19 @@ class _SignPageBodyState extends State<SignPageBody> {
         ),
       ),
     );
+  }
+
+  void _handleSignState(SignState state) {
+    if (state is SignInSuccessfulState) {
+      Modular.to.navigate(AppRoutes.home.path);
+    }
+    if (state is SignInWrongCredentials) {
+      // TODO
+      print("show wrong credentials pop up!");
+    }
+    if (state is SignUpSuccessfulState) {
+      // TODO
+      print("show successful registration pop up");
+    }
   }
 }

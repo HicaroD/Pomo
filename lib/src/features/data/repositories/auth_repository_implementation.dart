@@ -27,15 +27,15 @@ class AuthRepositoryImpl implements IAuthRepository {
       String token = await authDatasource.signIn(credentials);
       return Right(token);
     } on InvalidCredentialsException {
-      throw Left(InvalidCredentialsFailure());
+      return Left(InvalidCredentialsFailure());
     } on ServerException {
-      throw Left(ServerFailure());
+      return Left(ServerFailure());
     } on SignInException {
-      throw Left(SignInFailure());
+      return Left(SignInFailure());
     } on TimeoutException {
-      throw Left(TimeoutFailure());
+      return Left(TimeoutFailure());
     } on SocketException {
-      throw Left(NoInternetConnectionFailure());
+      return Left(NoInternetConnectionFailure());
     }
   }
 
@@ -49,15 +49,15 @@ class AuthRepositoryImpl implements IAuthRepository {
       UserModel createdUser = await authDatasource.signUp(credentials);
       return Right(createdUser);
     } on CredentialsAlreadyInUseException {
-      throw Left(CredentialsAlreadyInUseFailure());
+      return Left(CredentialsAlreadyInUseFailure());
     } on ServerException {
-      throw Left(ServerFailure());
+      return Left(ServerFailure());
     } on SignUpException {
-      throw Left(SignUpFailure());
+      return Left(SignUpFailure());
     } on TimeoutException {
-      throw Left(TimeoutFailure());
+      return Left(TimeoutFailure());
     } on SocketException {
-      throw Left(NoInternetConnectionFailure());
+      return Left(NoInternetConnectionFailure());
     }
   }
 }

@@ -22,20 +22,44 @@ class SignBloc extends Bloc<SignEvent, SignState> {
       final Either<Failure, String> result =
           await userSignInUsecase(event.params);
 
-      result.fold(
-        (failure) =>
-            throw UnimplementedError("Sign in bad state to be implemented"),
+      print(result);
+
+      return emit(result.fold(
+        (failure) => _handleSignInFailure(failure),
         (token) => SignInSuccessfulState(token),
-      );
+      ));
     });
 
     on<SignUpRequestEvent>((event, emit) async {
       final result = await userSignUpUsecase(event.params);
-      result.fold(
-        (failure) =>
-            throw UnimplementedError("Sign up bad state to be implemented"),
+      return emit(result.fold(
+        (failure) => _handleSignUpFailure(failure),
         (_) => SignUpSuccessfulState(),
-      );
+      ));
     });
+  }
+
+  SignState _handleSignInFailure(Failure failure) {
+    if (failure is InvalidCredentialsFormatFailure ||
+        failure is InvalidCredentialsFailure) {
+      return SignInWrongCredentials();
+    } else if (failure is TimeoutFailure ||
+        failure is NoInternetConnectionFailure) {
+      return SignBadInternetConnection();
+    }
+
+    return SignInBadBehavior();
+  }
+
+  SignState _handleSignUpFailure(Failure failure) {
+    if (failure is InvalidCredentialsFormatFailure) {
+      return SignUpWrongCredentials();
+    } else if (failure is CredentialsAlreadyInUseFailure) {
+      return SignUpCredentialsAlreadyUsed();
+    } else if (failure is TimeoutFailure ||
+        failure is NoInternetConnectionFailure) {
+      return SignBadInternetConnection();
+    }
+    return SignUpBadBehavior();
   }
 }

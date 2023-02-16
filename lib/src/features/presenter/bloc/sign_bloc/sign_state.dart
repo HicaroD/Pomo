@@ -10,6 +10,16 @@ class SignInSuccessfulState extends SignState {
   SignInSuccessfulState(this.token);
 }
 
+class SignInWrongCredentials extends SignState {}
+
+class SignInBadBehavior extends SignState {}
+
 class SignUpSuccessfulState extends SignState {}
 
-// TODO: Bad state for sign in and sign up
+class SignUpWrongCredentials extends SignState {}
+
+class SignUpCredentialsAlreadyUsed extends SignState {}
+
+class SignUpBadBehavior extends SignState {}
+
+class SignBadInternetConnection extends SignState {}
