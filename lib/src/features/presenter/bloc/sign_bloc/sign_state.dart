@@ -22,4 +22,6 @@ class SignUpCredentialsAlreadyUsed extends SignState {}
 
 class SignUpBadBehavior extends SignState {}
 
+class SignLoadingState extends SignState {}
+
 class SignBadInternetConnection extends SignState {}

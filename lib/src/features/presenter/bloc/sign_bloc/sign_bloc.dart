@@ -19,6 +19,8 @@ class SignBloc extends Bloc<SignEvent, SignState> {
     required this.userSignUpUsecase,
   }) : super(SignInitial()) {
     on<SignInRequestEvent>((event, emit) async {
+      emit(SignLoadingState());
+
       final Either<Failure, String> result =
           await userSignInUsecase(event.params);
 
@@ -29,6 +31,8 @@ class SignBloc extends Bloc<SignEvent, SignState> {
     });
 
     on<SignUpRequestEvent>((event, emit) async {
+      emit(SignLoadingState());
+
       final result = await userSignUpUsecase(event.params);
 
       return emit(result.fold(
