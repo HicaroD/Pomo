@@ -1,4 +1,9 @@
-class InvalidCredentialsException implements Exception {}
+import 'package:equatable/equatable.dart';
+
+class InvalidCredentialsException extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
+}
 
 class CredentialsAlreadyInUseException implements Exception {}
 

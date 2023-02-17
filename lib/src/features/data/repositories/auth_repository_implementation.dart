@@ -20,7 +20,7 @@ class AuthRepositoryImpl implements IAuthRepository {
   @override
   Future<Either<Failure, String>> signIn(SignInParams credentials) async {
     if (credentials.areEmpty()) {
-      throw InvalidCredentialsFormatFailure();
+      return Left(InvalidCredentialsFormatFailure());
     }
 
     try {
@@ -42,7 +42,7 @@ class AuthRepositoryImpl implements IAuthRepository {
   @override
   Future<Either<Failure, UserEntity>> signUp(SignUpParams credentials) async {
     if (credentials.areEmpty()) {
-      throw InvalidCredentialsFormatFailure();
+      return Left(InvalidCredentialsFormatFailure());
     }
 
     try {

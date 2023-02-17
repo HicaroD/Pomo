@@ -1,4 +1,9 @@
-class Failure implements Exception {}
+import 'package:equatable/equatable.dart';
+
+class Failure extends Equatable implements Exception {
+  @override
+  List<Object?> get props => [];
+}
 
 class InvalidCredentialsFormatFailure extends Failure {}
 
