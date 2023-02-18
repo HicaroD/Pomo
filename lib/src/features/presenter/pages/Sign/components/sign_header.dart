@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../widgets/Text/custom_text.dart';
-import '../../../widgets/Text/font_family.dart';
+import '../../../widgets/text/custom_text.dart';
+import '../../../widgets/text/font_family.dart';
 
 class SignPageHeader extends StatelessWidget {
   const SignPageHeader({Key? key}) : super(key: key);

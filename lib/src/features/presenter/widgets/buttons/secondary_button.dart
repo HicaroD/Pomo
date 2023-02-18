@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../utils/colors.dart';
-import '../Text/custom_text.dart';
-import '../Text/font_family.dart';
+import '../text/custom_text.dart';
+import '../text/font_family.dart';
 
 class SecondaryButton extends StatelessWidget {
   final String labelText;

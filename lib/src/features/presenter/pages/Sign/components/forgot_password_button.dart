@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../widgets/Text/custom_text.dart';
-import '../../../widgets/Text/font_family.dart';
+import '../../../widgets/text/custom_text.dart';
+import '../../../widgets/text/font_family.dart';
 
 class ForgotPasswordButton extends StatelessWidget {
   const ForgotPasswordButton({Key? key}) : super(key: key);

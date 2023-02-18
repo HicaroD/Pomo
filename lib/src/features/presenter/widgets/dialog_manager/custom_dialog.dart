@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import '../Buttons/secondary_button.dart';
-import '../Text/custom_text.dart';
-import '../Text/font_family.dart';
+import '../buttons/secondary_button.dart';
+import '../text/custom_text.dart';
+import '../text/font_family.dart';
 
 class CustomDialog extends StatelessWidget {
   final Icon icon;

@@ -3,10 +3,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../../core/params/sign_up_params.dart';
 import '../../../bloc/sign_bloc/sign_bloc.dart';
-import '../../../widgets/Buttons/primary_button.dart';
-import '../../../widgets/FormField/field_type.dart';
-import '../../../widgets/FormManager/form_field_content.dart';
-import '../../../widgets/FormManager/form_manager.dart';
+import '../../../widgets/buttons/primary_button.dart';
+import '../../../widgets/form_field/field_type.dart';
+import '../../../widgets/form_manager/form_field_content.dart';
+import '../../../widgets/form_manager/form_manager.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({Key? key}) : super(key: key);

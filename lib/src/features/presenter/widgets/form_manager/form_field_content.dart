@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../FormField/field_type.dart';
+import '../form_field/field_type.dart';
 
 class FormFieldContent {
   final TextEditingController controller = TextEditingController();

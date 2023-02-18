@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../widgets/Buttons/secondary_button.dart';
+import '../../../widgets/buttons/secondary_button.dart';
 
 class SignButtons extends StatelessWidget {
   final bool isSignInForm;
