@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../bloc/sign_bloc/sign_bloc.dart';
 import 'components/sign_page_body.dart';
 import 'components/sign_header.dart';
 import '../../../../utils/colors.dart';
@@ -13,18 +16,21 @@ class SignPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Container(
-        color: PomoColors.PRIMARY_RED,
-        child: Column(
-          children: <Widget>[
-            const Expanded(
-              child: SignPageHeader(),
-            ),
-            Expanded(
-              flex: 3,
-              child: SignPageBody(screenSize: screenSize),
-            ),
-          ],
+      body: BlocProvider(
+        create: (_) => Modular.get<SignBloc>(),
+        child: Container(
+          color: PomoColors.PRIMARY_RED,
+          child: Column(
+            children: <Widget>[
+              const Expanded(
+                child: SignPageHeader(),
+              ),
+              Expanded(
+                flex: 3,
+                child: SignPageBody(screenSize: screenSize),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomo_app/src/utils/colors.dart';
+import '../../../../utils/colors.dart';
 import '../Text/custom_text.dart';
 import '../Text/font_family.dart';
 
