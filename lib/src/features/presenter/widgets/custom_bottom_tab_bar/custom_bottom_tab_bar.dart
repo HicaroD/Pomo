@@ -21,8 +21,7 @@ class CustomBottomTabBar extends StatelessWidget {
         color: PomoColors.PRIMARY_RED,
       ),
       child: TabBar(
-        indicatorColor: PomoColors.PRIMARY_WHITE,
-        indicatorSize: TabBarIndicatorSize.label,
+        indicator: const BoxDecoration(),
         tabs: tabs,
       ),
     );
