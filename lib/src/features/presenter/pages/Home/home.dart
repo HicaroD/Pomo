@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../utils/colors.dart';
+import '../../widgets/custom_bottom_tab_bar/custom_bottom_tab_bar.dart';
 import '../../widgets/text/custom_text.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,24 +9,16 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: PomoColors.PRIMARY_RED,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.analytics),
-            label: "Analytics",
-          ),
-        ],
-      ),
-      body: Container(
-        color: PomoColors.PRIMARY_WHITE,
-        child: const CustomText("Hícaro"),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+        backgroundColor: PomoColors.PRIMARY_WHITE,
+        bottomNavigationBar: CustomBottomTabBar(),
+        body: Column(
+          children: const <Widget>[
+            CustomText("Hícaro"),
+          ],
+        ),
       ),
     );
   }
