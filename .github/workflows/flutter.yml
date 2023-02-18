@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with:
-        channel: 'stable'
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
     
-    - name: Get all dependencies
-    - run: flutter pub get
+      - name: Get all dependencies
+      - run: flutter pub get
     
-    - name: Analyze Flutter project
-    - run: flutter analyze --no-fatal-infos --no-fatal-warnings
+      - name: Analyze Flutter project
+      - run: flutter analyze --no-fatal-infos --no-fatal-warnings
