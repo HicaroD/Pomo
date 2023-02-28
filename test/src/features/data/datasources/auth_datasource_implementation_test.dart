@@ -5,8 +5,8 @@ import 'package:pomo_app/src/core/http_client/http_client.dart';
 import 'package:pomo_app/src/core/http_client/http_response.dart';
 import 'package:pomo_app/src/core/params/sign_in_params.dart';
 import 'package:pomo_app/src/core/params/sign_up_params.dart';
-import 'package:pomo_app/src/features/data/datasources/auth_datasource_implementation.dart';
-import 'package:pomo_app/src/features/data/models/user_model.dart';
+import 'package:pomo_app/src/data/datasources/auth_datasource_implementation.dart';
+import 'package:pomo_app/src/data/models/user_model.dart';
 import 'package:pomo_app/src/utils/api_endpoints.dart';
 
 class MockHttpClient extends Mock implements HttpClient {}

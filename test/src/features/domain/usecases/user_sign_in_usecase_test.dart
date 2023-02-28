@@ -3,9 +3,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pomo_app/src/core/errors/failures.dart';
 import 'package:pomo_app/src/core/params/sign_in_params.dart';
-import 'package:pomo_app/src/features/data/repositories/auth_repository_implementation.dart';
-import 'package:pomo_app/src/features/domain/repositories/auth_repository_interface.dart';
-import 'package:pomo_app/src/features/domain/usecases/user_sign_in_usecase.dart';
+import 'package:pomo_app/src/data/repositories/auth_repository_implementation.dart';
+import 'package:pomo_app/src/domain/repositories/auth_repository_interface.dart';
+import 'package:pomo_app/src/domain/usecases/user_sign_in_usecase.dart';
 
 class MockAuthRepository extends Mock implements AuthRepositoryImpl {}
 

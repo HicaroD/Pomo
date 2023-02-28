@@ -8,10 +8,10 @@ import 'package:pomo_app/src/core/errors/exceptions.dart';
 import 'package:pomo_app/src/core/errors/failures.dart';
 import 'package:pomo_app/src/core/params/sign_in_params.dart';
 import 'package:pomo_app/src/core/params/sign_up_params.dart';
-import 'package:pomo_app/src/features/data/datasources/auth_datasource_implementation.dart';
-import 'package:pomo_app/src/features/data/models/user_model.dart';
-import 'package:pomo_app/src/features/data/repositories/auth_repository_implementation.dart';
-import 'package:pomo_app/src/features/domain/repositories/auth_repository_interface.dart';
+import 'package:pomo_app/src/data/datasources/auth_datasource_implementation.dart';
+import 'package:pomo_app/src/data/models/user_model.dart';
+import 'package:pomo_app/src/data/repositories/auth_repository_implementation.dart';
+import 'package:pomo_app/src/domain/repositories/auth_repository_interface.dart';
 
 class MockAuthDatasource extends Mock implements AuthDatasourceImpl {}
 

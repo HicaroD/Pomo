@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pomo_app/src/features/data/models/user_model.dart';
+import 'package:pomo_app/src/data/models/user_model.dart';
 
 void main() {
   final userModel = UserModel(
