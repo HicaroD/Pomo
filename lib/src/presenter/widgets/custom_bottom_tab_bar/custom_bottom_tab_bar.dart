@@ -15,9 +15,7 @@ class CustomBottomTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(30),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
+      decoration: const BoxDecoration(
         color: PomoColors.PRIMARY_RED,
       ),
       child: TabBar(

@@ -9,7 +9,7 @@ class CustomText extends StatelessWidget {
   final Color? color;
   final double? fontSize;
   final FontWeight? fontWeight;
-  final FontFamily? fontFamily;
+  final FontFamily fontFamily;
 
   const CustomText(
     this.text, {
@@ -17,7 +17,7 @@ class CustomText extends StatelessWidget {
     this.color,
     this.fontSize,
     this.fontWeight,
-    this.fontFamily,
+    this.fontFamily = FontFamily.roboto,
   }) : super(key: key);
 
   @override
@@ -36,8 +36,6 @@ class CustomText extends StatelessWidget {
   }
 
   String _getFontFamily() {
-    if (fontFamily == null) return "Roboto";
-
     switch (fontFamily) {
       case FontFamily.roboto:
         return "Roboto";
